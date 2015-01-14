@@ -1,0 +1,2 @@
+/Users/bpascazio/Desktop/ToDoList1/app/build/intermediates/classes/debug
+/Users/bpascazio/Desktop/ToDoList1/app/build/intermediates/pre-dexed/debug/support-v4-18.0.0-f02d412c8cc49d6a060e09bc1136dc907e4a3cdb.jar
