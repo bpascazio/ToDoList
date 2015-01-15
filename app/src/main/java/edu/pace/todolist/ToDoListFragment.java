@@ -41,7 +41,7 @@ public class ToDoListFragment extends ListFragment {
                 "todo", null, 1);
 
         if (helper != null) {
-            helper.openDatabase();
+            helper.getAllTodos();
         } else {
             Log.d("database", "failed to get db helper");
         }

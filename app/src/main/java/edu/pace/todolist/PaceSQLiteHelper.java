@@ -1,6 +1,7 @@
 package edu.pace.todolist;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -10,6 +11,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -59,6 +62,37 @@ public class PaceSQLiteHelper extends SQLiteOpenHelper {
         }
     }
 
+
+    public ArrayList<String> getAllTodos() {
+
+        String path = "/data/data/edu.pace.todolist/"+name;
+        SQLiteDatabase db = null;
+        ArrayList list = null;
+        try {
+
+            Log.d("database", "attempt to open database");
+
+            String queryString = "select * from todo_items";
+
+            db = SQLiteDatabase.openDatabase(path, null,
+                    SQLiteDatabase.OPEN_READWRITE);
+
+            Cursor cursor = db.rawQuery(queryString, null);
+
+            list = new ArrayList();
+
+            for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
+                list.add(cursor.getColumnIndex("name"));
+                Log.d("database", "found db item "+cursor.getString(1));
+            }
+
+        } catch (SQLException e) {
+            Log.d("database", "failed to open so copying database");
+
+            copyDataBase();
+        }
+        return list;
+    }
 
     public void openDatabase() throws SQLException {
         String path = "/data/data/edu.pace.todolist/"+name;
