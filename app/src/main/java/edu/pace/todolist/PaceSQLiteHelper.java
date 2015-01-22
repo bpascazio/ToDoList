@@ -62,6 +62,31 @@ public class PaceSQLiteHelper extends SQLiteOpenHelper {
         }
     }
 
+    public void addTodo(String todoName) {
+
+        String path = "/data/data/edu.pace.todolist/"+name;
+        SQLiteDatabase db = null;
+        ArrayList list = null;
+        try {
+
+            Log.d("database", "attempt to open database");
+
+            String queryString = "insert into todo_items values (null, \""+todoName+"\", 0, 0)";
+
+            db = SQLiteDatabase.openDatabase(path, null,
+                    SQLiteDatabase.OPEN_READWRITE);
+
+            db.execSQL(queryString);
+
+            db.close();
+
+        } catch (SQLException e) {
+            Log.d("database", "failed to open so copying database");
+
+            copyDataBase();
+        }
+    }
+
 
     public ArrayList<String> getAllTodos() {
 
@@ -82,7 +107,7 @@ public class PaceSQLiteHelper extends SQLiteOpenHelper {
             list = new ArrayList();
 
             for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
-                list.add(cursor.getColumnIndex("name"));
+                list.add(cursor.getString(1)); //cursor.getColumnIndex("name"));
                 Log.d("database", "found db item "+cursor.getString(1));
             }
 
