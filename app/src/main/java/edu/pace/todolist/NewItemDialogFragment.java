@@ -15,7 +15,7 @@ public class NewItemDialogFragment extends DialogFragment {
 	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setStyle(DialogFragment.STYLE_NO_TITLE, android.R.style.Theme_DeviceDefault_Dialog);
+	//	setStyle(DialogFragment.STYLE_NO_TITLE, android.R.style.Theme_DeviceDefault_Dialog);
 	}
 	
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedIntanceState) {

@@ -67,9 +67,12 @@ public class MainActivity extends Activity implements
 		case 1:
 			listType = ToDoListType.COMPLETED;
 			break;
-		case 2:
-			listType = ToDoListType.DELETED;
-			break;
+        case 2:
+            listType = ToDoListType.DELETED;
+            break;
+        case 3:
+            listType = ToDoListType.DATABASE;
+            break;
 		}
 		fragmentManager
 				.beginTransaction()
@@ -89,6 +92,9 @@ public class MainActivity extends Activity implements
 		case 3:
 			mTitle = getString(R.string.title_section3);
 			break;
+        case 4:
+            mTitle = getString(R.string.title_section4);
+            break;
 		}
 	}
 

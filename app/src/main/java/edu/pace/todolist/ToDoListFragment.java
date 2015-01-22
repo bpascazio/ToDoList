@@ -12,7 +12,7 @@ import android.widget.ArrayAdapter;
 public class ToDoListFragment extends ListFragment {
 
 	public enum ToDoListType {
-		OPEN, COMPLETED, DELETED
+		OPEN, COMPLETED, DELETED, DATABASE
 	}
 
 	String[] todos_text1 = new String[] { "feed the cat", "pay parking ticket",
@@ -46,8 +46,6 @@ public class ToDoListFragment extends ListFragment {
             Log.d("database", "failed to get db helper");
         }
 
-
-
         String[] sarray = null;
 
         switch (listType) {
@@ -58,6 +56,9 @@ public class ToDoListFragment extends ListFragment {
                 sarray = todos_text2;
                 break;
             case DELETED:
+                sarray = todos_text3;
+                break;
+            case DATABASE:
                 sarray = todos_text3;
                 break;
         }
